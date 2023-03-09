@@ -1,12 +1,13 @@
-/*la feuille de style du carrousel*/
-/*
-le conteneur pricipale du carrousel 
-*/
-.carrousel {}
-/* bouton de fermeture de la bote modale
-*/
-.carrousel x {}
-/* conteneur des i,qges du cqrrousel*/
-.carrousel figure {}
+/*  la feuille de style du carrousel */
+
+/* Le conteneur principale du carrousel */
+.carrousel{}
+
+/* bouton de fermeture de la boîte modale */
+.carrousel__x {}
+
+/* conteneur des images du carrousel */
+.carrousel__figure{}
+
 /* le conteneur des boutons radio */
-.carrousel form {}
+.carrousel__form {}
