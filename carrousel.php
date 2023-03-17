@@ -33,13 +33,15 @@
     add_action('wp_enqueue_scripts', 'carrousel_enqueue');
     
     function creation_carrousel()
-    {
+{
     return '<button class="bouton__ouvrir">Ouvrir</button>
-        <div class="carrousel">
-        <button class="bouton__x">X</button>
-        <figure class="carrousel__figure"></figure>
-        <form class="carrousel__form"></form>
-        </div>';
-    }  
+            <div class="carrousel">
+                <button class="bouton__x">X</button>
+                <button class="bouton__precedent">Précédent</button>
+                <figure class="carrousel__figure"></figure>
+                <button class="bouton__suivant">Suivant</button>
+                <form class="carrousel__form"></form>
+            </div>';
+}
     
     add_shortcode('carrousel', 'creation_carrousel');

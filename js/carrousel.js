@@ -65,5 +65,49 @@
         index__precedent= index;
     }
     
-    
+    // On récupère les éléments du carrousel
+const elmBouton__suivant = document.querySelector('.bouton__suivant');
+const elmBouton__precedent = document.querySelector('.bouton__precedent');
+
+
+// On initialise l'index de l'image active à 0
+let index__actif = 0;
+
+// On ajoute un écouteur d'événement sur le bouton "Suivant"
+elmBouton__suivant.addEventListener('click', () => {
+  // On incrémente l'index de l'image active
+  index__actif++;
+  // Si l'index dépasse le nombre d'images, on revient au début
+  if (index__actif >= elmCarrousel__figure.children.length) {
+    index__actif = 0;
+  }
+  // On active l'image correspondant à l'index actif
+  activer__image(index__actif);
+});
+
+// On ajoute un écouteur d'événement sur le bouton "Précédent"
+elmBouton__precedent.addEventListener('click', () => {
+  // On décrémente l'index de l'image active
+  index__actif--;
+  // Si l'index est négatif, on revient à la dernière image
+  if (index__actif < 0) {
+    index__actif = elmCarrousel__figure.children.length - 1;
+  }
+  // On active l'image correspondant à l'index actif
+  activer__image(index__actif);
+});
+
+// La fonction pour activer une image est déjà fournie dans la question
+function activer__image(index) {
+  // On désactive l'image précédente
+  if (index__actif !== -1) {
+    elmCarrousel__figure.children[index__actif].classList.remove('carrousel__img--activer');
+  }
+  // On active l'image correspondant à l'index
+  elmCarrousel__figure.children[index].classList.add('carrousel__img--activer');
+  // On met à jour l'index de l'image active
+  index__actif = index;
+}
+
+
     })()
