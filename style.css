@@ -73,21 +73,3 @@
   justify-content: center;
   z-index: 12;
 } /*# sourceMappingURL=style.css.map */
-
-.bouton__precedent,
-.bouton__suivant {
-  background-color: #ffffff;
-  border: 2px solid #000000;
-  color: #000000;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.bouton__precedent:hover,
-.bouton__suivant:hover {
-  background-color: #000000;
-  color: #ffffff;
-}
