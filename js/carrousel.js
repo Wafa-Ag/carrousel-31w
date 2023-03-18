@@ -64,50 +64,52 @@
         elmCarrousel__figure.children[index].classList.add('carrousel__img--activer') 
         index__precedent= index;
     }
-    
-    // On récupère les éléments du carrousel
-const elmBouton__suivant = document.querySelector('.bouton__suivant');
-const elmBouton__precedent = document.querySelector('.bouton__precedent');
 
+  // pour desactiver un image 
+    function desactiver_image(index) {
+      elmCarrousel__figure.children[index].classList.remove('carrousel__img--activer');
+    }
+/**
+ * Dans ce code, les boutons "suivant" et "précédent" sont initialement désactivés si le carrousel ne 
+ * contient qu'une seule image ou si l'index de l'image actuelle est à la première ou dernière position. 
+ * Lorsque l'utilisateur clique sur l'un des boutons, l'index de l'image actuelle est mis à jour, 
+ * les fonctions activer__image() et desactiver_image() sont appelées, et les boutons "suivant" et 
+ * "précédent" sont mis à jour en fonction de la position de l'image actuelle. Notez que vous devrez 
+ * remplacer les sélecteurs de classe pour les boutons et la figure en fonction de votre propre code HTML.
+ * 
+ */
 
-// On initialise l'index de l'image active à 0
-let index__actif = 0;
+const bouton_suivant = document.querySelector('.bouton__suivant');
+const bouton_precedent = document.querySelector('.bouton__precedent');
+let index_image_actuelle = 0;
 
-// On ajoute un écouteur d'événement sur le bouton "Suivant"
-elmBouton__suivant.addEventListener('click', () => {
-  // On incrémente l'index de l'image active
-  index__actif++;
-  // Si l'index dépasse le nombre d'images, on revient au début
-  if (index__actif >= elmCarrousel__figure.children.length) {
-    index__actif = 0;
+bouton_suivant.addEventListener('click', function() {
+  desactiver_image(index_image_actuelle);
+  index_image_actuelle = (index_image_actuelle + 1) % elmCarrousel__figure.children.length;
+  activer__image(index_image_actuelle);
+  if (index_image_actuelle === elmCarrousel__figure.children.length - 1) {
+    bouton_suivant.disabled = true;
   }
-  // On active l'image correspondant à l'index actif
-  activer__image(index__actif);
+  if (index_image_actuelle > 0) {
+    bouton_precedent.disabled = false;
+  }
 });
 
-// On ajoute un écouteur d'événement sur le bouton "Précédent"
-elmBouton__precedent.addEventListener('click', () => {
-  // On décrémente l'index de l'image active
-  index__actif--;
-  // Si l'index est négatif, on revient à la dernière image
-  if (index__actif < 0) {
-    index__actif = elmCarrousel__figure.children.length - 1;
+bouton_precedent.addEventListener('click', function() {
+  desactiver_image(index_image_actuelle);
+  index_image_actuelle = (index_image_actuelle - 1 + elmCarrousel__figure.children.length) % elmCarrousel__figure.children.length;
+  activer__image(index_image_actuelle);
+  if (index_image_actuelle === 0) {
+    bouton_precedent.disabled = true;
   }
-  // On active l'image correspondant à l'index actif
-  activer__image(index__actif);
+  if (index_image_actuelle < elmCarrousel__figure.children.length - 1) {
+    bouton_suivant.disabled = false;
+  }
 });
 
-// La fonction pour activer une image est déjà fournie dans la question
-function activer__image(index) {
-  // On désactive l'image précédente
-  if (index__actif !== -1) {
-    elmCarrousel__figure.children[index__actif].classList.remove('carrousel__img--activer');
-  }
-  // On active l'image correspondant à l'index
-  elmCarrousel__figure.children[index].classList.add('carrousel__img--activer');
-  // On met à jour l'index de l'image active
-  index__actif = index;
+bouton_precedent.disabled = true;
+if (elmCarrousel__figure.children.length === 1) {
+  bouton_suivant.disabled = true;
 }
-
 
     })()
