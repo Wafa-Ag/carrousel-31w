@@ -2,7 +2,6 @@
 /*  la feuille de style du carrousel */
 /* Le conteneur principale du carrousel */
 .carrousel {
-  display: block;
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -26,18 +25,18 @@
   transform: scale(1);
 }
 
+/* bouton de fermeture de la boîte modale */
 .bouton__x {
   position: absolute;
   top: 10px;
   right: 10px;
   width: 40px;
   height: 40px;
-  border: 1px solid grey;
+  border: 1px solid #aaa;
   border-radius: 5px;
   z-index: 10;
 }
 
-/* bouton de fermeture de la boîte modale */
 /* conteneur des images du carrousel */
 .carrousel__figure {
   width: 100%;
@@ -55,11 +54,24 @@
   opacity: 0;
   transition: opacity 0.5s;
   object-fit: cover;
-  z-index: 9;
 }
 
 .carrousel__img--activer {
   opacity: 1;
+}
+
+.controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+.controls .bouton__suivant {
+  position: absolute;
+  right: 20px;
+}
+.controls .bouton__precedent {
+  position: absolute;
+  left: 20px;
 }
 
 /* le conteneur des boutons radio */
@@ -72,4 +84,4 @@
   display: flex;
   justify-content: center;
   z-index: 12;
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
